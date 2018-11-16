@@ -1,0 +1,90 @@
+html {
+    height: 100%;
+}
+
+h1 {
+    color: #fff;
+}
+
+.search-container, .user-list {
+    max-width: 500px;
+}
+
+form, .search-container, .center-container,
+.username-left-ph-container, .card {
+    display: flex;
+}
+
+form, .search-container, .username-left-ph-span,
+.card-img-left, .user-list {
+    margin: auto;
+}
+
+h4 {
+    margin: 0;
+}
+
+.user-item {
+    margin: 6px;
+}
+
+.card-body {
+    margin-left: 12px;
+}
+
+.username-left-ph-span {
+    padding: 0 12px;
+}
+
+.user-list {
+    padding: 0;
+}
+
+.user-item {
+    padding: 10px;
+}
+
+.username-left-ph-container {
+    border-radius: 5px 0 0 5px;
+    border-right: none;
+}
+
+.username-left-ph-container, .user-item {
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.user-item {
+    border-radius: 5px;
+}
+
+.grey-dark-bg-color, .user-item {
+    background-color: #e9ecef;
+}
+
+.twitter-bg-color {
+    background-color: #1EB0E8;
+}
+
+.user-list {
+    list-style: none;
+}
+
+.user-item {
+    -webkit-box-shadow: 0 3px 0 0 rgba(0, 0, 0, 0);
+    -moz-box-shadow: 0 3px 0 0 rgba(0, 0, 0, 0);
+    box-shadow: 0 3px 0 0 rgba(0, 0, 0, 0);
+}
+
+.user-item:hover {
+    -webkit-box-shadow: 0 3px 0 0 rgba(100, 100, 100, .2);
+    -moz-box-shadow: 0 3px 0 0 rgba(100, 100, 100, .2);
+    box-shadow: 0 3px 0 0 rgba(100, 100, 100, .2);
+}
+
+.user-item:hover {
+    cursor: pointer;
+}
+
+.card-title, .card-text {
+    white-space: nowrap;
+}
