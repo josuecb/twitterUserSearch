@@ -2,7 +2,8 @@
     'use strict';
     var timeoutCall,
         cb = new Codebird,
-        input = document.getElementsByTagName("input")[0];
+        input = document.getElementsByTagName("input")[0],
+        prevInputStr = '';
 
 
     cb.setConsumerKey("0FNuPgKy1g4U7wGIbMiysms3G", "7n1M3aeIoBqRI3BS4czvhWhpevG2MaDbigtZhVR248BthTtiSN");
@@ -10,8 +11,6 @@
 
 
     function searchUser(username) {
-        clearUserList();
-
         var params = {
             q: username
         };
@@ -25,9 +24,11 @@
                 var contentView = document.getElementsByClassName('user-list')[0];
                 for (let index in reply) {
                     let user = reply[index];
+
                     // console.log(user.name);
                     // console.log('=====================');
-                    if (user !== undefined) bindUserView(contentView, user);
+                    if (user !== undefined && isNaN(user)) bindUserView(contentView, user);
+
                 }
             }
         );
@@ -37,7 +38,6 @@
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
             if (this.readyState === 4 && this.status === 200) {
-                console.log(this.responseText);
                 document.getElementsByClassName('content-view')[0].innerHTML = this.responseText;
             }
         };
@@ -109,13 +109,18 @@
 
     if (input) {
         input.addEventListener('keydown', function (e) {
-            console.log(input.value);
+            // Avoid calls when changing page
+            if (prevInputStr !== input.value) {
+                clearTimeout(timeoutCall);
+                timeoutCall = setTimeout(function () {
+                    clearUserList();
 
-            clearTimeout(timeoutCall);
-            timeoutCall = setTimeout(function () {
-                searchUser(input.value);
-                console.log('firing')
-            }, 250);
+                    if (input.value) searchUser(input.value.trim());
+                }, 250);
+            }
+
+            prevInputStr = input.value;
+
         });
     }
 })();
